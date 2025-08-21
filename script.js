@@ -997,57 +997,34 @@ function generateCertificate() {
 
 
 async function downloadCertificate() {
+    const { jsPDF } = window.jspdf; // Importar la clase jsPDF
+
     const cert = document.getElementById('certificate');
 
-    // Serializar el certificado a string
-    const serialized = new XMLSerializer().serializeToString(cert);
+    // Capturar el certificado como canvas
+    const canvas = await html2canvas(cert, { scale: 2 });
+    const imgData = canvas.toDataURL('image/png');
 
-    // Crear SVG que contiene el DOM como foreignObject
-    const svg = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="${cert.offsetWidth}" height="${cert.offsetHeight}">
-            <foreignObject width="100%" height="100%">
-                ${serialized}
-            </foreignObject>
-        </svg>
-    `;
+    // Crear PDF en formato A4 horizontal
+    const pdf = new jsPDF('landscape', 'pt', 'a4');
 
-    // Convertir a Blob
-    const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
+    // Obtener ancho/alto del PDF
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
 
-    // Cargar imagen desde SVG
-    const img = new Image();
-    img.onload = async () => {
-        // Crear canvas y dibujar imagen
-        const canvas = document.createElement('canvas');
-        canvas.width = cert.offsetWidth * 2;   // aumentar resolución
-        canvas.height = cert.offsetHeight * 2;
-        const ctx = canvas.getContext('2d');
-        ctx.scale(2, 2);
-        ctx.drawImage(img, 0, 0);
-        URL.revokeObjectURL(url);
+    // Calcular tamaño proporcional de la imagen
+    const imgWidth = pageWidth;
+    const imgHeight = canvas.height * (imgWidth / canvas.width);
 
-        // Convertir a PNG
-        const imgData = canvas.toDataURL('image/png');
+    // Centrar verticalmente si sobra espacio
+    const y = (pageHeight - imgHeight) / 2;
 
-        // Generar PDF con jsPDF
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF('landscape', 'pt', 'a4');
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
+    // Agregar imagen al PDF
+    pdf.addImage(imgData, 'PNG', 0, y, imgWidth, imgHeight);
 
-        const imgWidth = pageWidth;
-        const imgHeight = canvas.height * (imgWidth / canvas.width);
-        const y = (pageHeight - imgHeight) / 2;
-
-        pdf.addImage(imgData, 'PNG', 0, y, imgWidth, imgHeight);
-        pdf.save(`certificado_${examData.studentName}.pdf`);
-    };
-
-    img.src = url;
+    // Descargar
+    pdf.save(`certificado_${examData.studentName}.pdf`);
 }
-
-
 
 
 
@@ -1130,3 +1107,4 @@ fetch("guardar_resultado.php", {
             console.error("Error al guardar:", data.message);
         }
     });
+
