@@ -1,0 +1,579 @@
+/* Estilos base */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #e74c3c;
+    --accent-color: #e74c3c;
+    --dark-color: #1a252f;
+    --light-color: #ecf0f1;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+/* Header */
+.exam-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('imagenes/trailer3.jpeg');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    position: relative;
+}
+
+.header-overlay {
+    position: relative;
+    z-index: 1;
+}
+
+.logo-image {
+    max-height: 100px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* ESTILO ORIGINAL QUE TENÍAS (solo cambiando el fondo) */
+.exam-question-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('imagenes/linea.jpg'); /* Solo cambia esta línea */
+    background-size: cover;
+    background-position: center;
+    padding: 20px; /* Este es el tamaño original que tenías */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Tarjetas */
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Formularios */
+.form-floating label {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    padding: 16px 20px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(231, 76, 60, 0.25); /* Cambiado de rgba(52, 152, 219, 0.25) a rgba(231, 76, 60, 0.25) */
+}
+
+/* Subida de foto */
+
+
+
+
+.upload-label {
+    cursor: pointer;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.upload-text span {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.upload-text small {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+
+
+/* Botones */
+.btn {
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #1a252f;
+    border-color: #1a252f;
+}
+
+.btn-lg {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+}
+
+/* Preguntas del examen */
+.question {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--accent-color);
+}
+
+.question h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.options {
+    display: grid;
+    gap: 12px;
+}
+
+.option {
+    background-color: white;
+    padding: 18px 20px;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.option:hover {
+    border-color: var(--accent-color);
+    background-color: #f8f9fa;
+}
+
+.option.selected {
+    border-color: var(--accent-color);
+    background-color: #fef1f1; /* Cambiado de #f1f8fe a #fef1f1 (tono rojizo claro) */
+    font-weight: 500;
+}
+
+.option input[type="radio"] {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-color);
+    cursor: pointer;
+}
+
+/* Iconos de instrucciones */
+.instruction-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('imagenes/trailers.jpg'); /* Puedes cambiar esta imagen por la que quieras */
+    background-size: cover;
+    background-position: center;
+    padding: 40px 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.instruction-header h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.instruction-header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.instruction-header h4 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}*/
+
+.instruction-box {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--accent-color);
+}
+
+.instruction-left-border {
+    border-left: 4px solid var(--accent-color); /* solo borde izquierdo en rojo */
+    padding: 15px 20px;
+    background-color: #f8f9fa !important;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    margin: 10px 0;
+}
+
+/* Resultados */
+.result-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin: 0 auto 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.success-icon {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.fail-icon {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Certificado */
+.certificate {
+    background-color: white;
+    border-radius: 5px;
+    padding: 0;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-border {
+    border: 15px solid var(--primary-color);
+    padding: 40px;
+    position: relative;
+}
+
+.certificate-border::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid var(--accent-color);
+    pointer-events: none;
+}
+
+.certificate-logo {
+    max-height: 80px;
+    margin-bottom: 20px;
+}
+
+.certificate-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.certificate-subtitle {
+    font-size: 18px;
+    color: #6c757d;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.certificate-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.certificate-content {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.certificate-name {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 20px 0;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--accent-color);
+    border-top: 2px solid var(--accent-color);
+    text-transform: uppercase;
+}
+
+.certificate-topic {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin: 20px 0;
+}
+
+.certificate-details {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.certificate-value {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 18px;
+}
+
+
+
+
+.certificate-footer {
+    margin-top: 40px;
+}
+
+.signature-line {
+    display: inline-block;
+    text-align: center;
+    margin: 0 20px;
+}
+
+.signature {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    padding-top: 15px;
+    border-top: 1px solid #6c757d;
+}
+
+.signature-title {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Barra de progreso */
+.progress {
+    border-radius: 10px;
+    height: 10px;
+}
+
+.progress-bar {
+    background-color: var(--accent-color);
+}
+
+/* Utilidades */
+.hidden {
+    display: none !important;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-accent {
+    color: var(--accent-color) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .exam-header {
+        padding: 60px 0;
+    }
+    
+    .certificate-border {
+        padding: 20px;
+    }
+    
+    .certificate-title {
+        font-size: 24px;
+    }
+    
+    .certificate-name {
+        font-size: 22px;
+    }
+    
+    .certificate-topic {
+        font-size: 20px;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #certificate, #certificate * {
+        visibility: visible;
+    }
+    #certificate {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+    }
+    .certificate-border {
+        border: none;
+        padding: 0;
+    }
+    .certificate-border::before {
+        display: none;
+    }
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* ===== Overrides para Certificado ALCA en resultado ===== */
+
+/* Evitar que la tarjeta recorte el certificado */
+#resultScreen.card{
+  border-radius: 0 !important;
+  overflow: visible !important;     /* antes hidden */
+  box-shadow: none !important;
+}
+#resultScreen .card-body{
+  padding: 20px 0 !important;       /* menos padding para que no empuje la imagen */
+}
+
+/* Contenedor del certificado (nuevo diseño) a tamaño completo */
+.certificate.alca{
+  position: relative;
+  margin: 0 auto;
+  width: 1280px;                     /* ajusta si tu imagen tiene otras proporciones */
+  height: 900px;
+  background-image: url('imagenes/certificado_alca.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+
+  /* Romper restricciones de la regla base .certificate { max-width: 800px; } */
+  max-width: none !important;
+}
+
+/* Posicionamiento fino de textos sobre el arte */
+.alca__name{
+  position: absolute;
+  top: 360px;        /* ↓ más abajo */
+  left: 120px;
+  width: 1040px;
+  text-align: center;
+  font-size: 46px;
+  font-weight: 800;
+  color: #111;
+}
+
+.alca__topic{
+  position: absolute;
+  top: 550px;        /* ↓ más abajo */
+  left: 100px;       /* ← más a la izquierda */
+  width: 1080px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: #111;
+}
+
+/* Firmas (las leyendas y líneas ya vienen en el arte) */
+.alca__sign{ position: absolute; width: 360px; text-align: center; }
+.alca__sign--student{ bottom: 165px; left: 200px; }
+.alca__sign--instructor{ bottom: 165px; right: 200px; }
+.alca__line{ display: none; }
+.alca__label{ display: none; }
+
+/* Busca estas líneas en tu styles.css y reemplázalas: */
+
+/* REEMPLAZA estas líneas en tu styles.css: */
+
+/* Nombre del participante - ENCIMA de su línea (izquierda) */
+.alca__participant{
+  position: absolute;
+  left: 200px;
+  bottom: 205px;     /* ← CAMBIAR: era 195px, ahora 205px */
+  width: 360px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: #111;
+}
+
+.alca__instructor{
+  position: absolute;
+  right: 200px;
+  bottom: 205px;     /* ← CAMBIAR: era 210px, ahora 205px */
+  width: 360px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: #111;
+}
+
+/* Fecha al pie - sin cambios */
+.alca__date{
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 75px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: #111;
+}
+
+/* Versión para impresión: */
+@media print {
+  .alca__participant{
+    left: 200px !important;
+    bottom: 205px !important;  /* ← CAMBIAR: igualar a 205px */
+    width: 360px !important;
+    text-align: center !important;
+    font-size: 18px !important;
+  }
+  
+  .alca__instructor{
+    right: 200px !important;
+    bottom: 205px !important;  /* ← CAMBIAR: igualar a 205px */
+    width: 360px !important;
+    text-align: center !important;
+    font-size: 18px !important;
+  }
+}

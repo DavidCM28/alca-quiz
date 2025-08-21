@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Exámenes - Autolíneas Cavazos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container-fluid px-0">
+        <!-- Header con imagen de fondo -->
+        <header class="exam-header">
+            <div class="header-overlay">
+                <div class="container py-5">
+                    <div class="text-center mb-4">
+                        <img src="imagenes/alcat.png" alt="Logo AUTOLINEAS CAVAZOS" class="logo-image img-fluid" crossorigin="anonymous">
+                    </div>
+                    <h1 class="text-white text-center mb-3">Sistema de Evaluación</h1>
+                    <p class="text-center text-white-50 mb-0">Capacitación Profesional para Operadores y Personal</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="container py-5">
+            <!-- Pantalla de inicio -->
+            <div id="startScreen" class="card shadow-lg">
+                <div class="card-body p-4 p-md-5">
+                    <form id="startForm">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="studentName"
+                                        placeholder="Nombre completo" required>
+                                    <label for="studentName"><i class="fas fa-user me-2"></i>Nombre del participante
+                                        *</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="instructorName"
+                                        placeholder="Nombre del instructor" required>
+                                    <label for="instructorName"><i class="fas fa-chalkboard-teacher me-2"></i>Nombre del
+                                        instructor *</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="topic" required>
+                                        <option value="">Seleccione un tema</option>
+                                        <option value="Facturación">Facturación</option>
+                                        <option value="Tráfico">Tráfico</option>
+                                        <option value="Carta Porte">Carta Porte</option>
+                                        <option value="Bancos">Bancos</option>
+                                        <option value="Nóminas">Nóminas</option>
+                                        <option value="Recepción">Recepción</option>
+                                        <option value="Contabilidad">Contabilidad</option>
+                                        <option value="Liquidaciones">Liquidaciones</option>
+                                        <option value="Recursos Humanos">Recursos Humanos</option>
+                                        <option value="Monitoreo">Monitoreo</option>
+                                        <option value="Sistemas">Sistemas</option>
+                                        <option value="Taller">Taller</option>
+                                        <option value="Almacen">Almacen</option>
+                                        <option value="Unidad de verificación">Unidad de verificación</option>
+                                        <option value="Operadores">Operadores</option>
+                                    </select>
+                                    <label for="topic"><i class="fas fa-book me-2"></i>Tema de capacitación *</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="examDate" required>
+                                    <label for="examDate"><i class="far fa-calendar-alt me-2"></i>Fecha del examen
+                                        *</label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12 mt-3">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">
+                                    <i class="fas fa-play me-2"></i>Comenzar Examen
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Pantalla de instrucciones -->
+            <div id="instructionScreen" class="card shadow-lg hidden">
+                <div class="card-body p-4 p-md-5">
+                    <div class="instruction-header">
+                        <div class="instruction-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h2 class="mb-3">Instrucciones del Examen</h2>
+                        <p class="mb-3">Lea cuidadosamente antes de comenzar</p>
+                        <h4>Información sobre su examen de <span id="selectedTopic"></span></h4>
+                    </div>
+
+                    <div class="instruction-content">
+
+                        <div class="instruction-box bg-light p-4 rounded-3 mb-4 instruction-left-border">
+                            <div class="row">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <p class="mb-2"><strong><i
+                                                class="fas fa-question-circle me-2 text-primary"></i>Total de
+                                            preguntas:</strong> 10</p>
+                                    <p class="mb-2"><strong><i class="fas fa-check-circle me-2 text-primary"></i>Para
+                                            aprobar:</strong> Mínimo 8 correctas</p>
+                                </div>
+                                <div class="col-md-6 instruction-left-border">
+                                    <p class="mb-2"><strong><i
+                                                class="far fa-clock me-2 text-primary"></i>Tiempo:</strong> Sin límite
+                                    </p>
+                                    <p class="mb-0"><strong><i
+                                                class="fas fa-certificate me-2 text-primary"></i>Reconocimiento:</strong>
+                                        Automático al aprobar</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="instruction-box bg-light p-4 rounded-3 mb-4 instruction-left-border">
+                            <h5 class="mb-3"><i class="fas fa-info-circle me-2 text-primary"></i>Instrucciones
+                                importantes:</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Lea cada pregunta
+                                    cuidadosamente</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Seleccione solo
+                                    una respuesta por pregunta</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>No podrá regresar
+                                    a preguntas anteriores</li>
+                                <li class="mb-0"><i class="fas fa-check-circle text-success me-2"></i>Asegúrese de
+                                    responder todas las preguntas</li>
+                            </ul>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button class="btn btn-primary btn-lg px-5" onclick="startExamFromInstructions()">
+                                <i class="fas fa-play me-2"></i>Comenzar Examen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pantalla de examen -->
+            <div id="examScreen" class="card shadow-lg hidden">
+                <div class="card-body p-4 p-md-5">
+                    <!-- Encabezado con nuevo fondo -->
+                    <div class="exam-question-header text-center mb-4">
+                        <h2 class="mb-3">Examen de Capacitación</h2>
+                        <div class="progress mb-3" style="height: 10px;">
+                            <div id="progressFill" class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"></div>
+                        </div>
+                        <p class="mb-0">Pregunta <span id="currentQuestion">1</span> de 10</p>
+                    </div>
+
+                    <div id="questionContainer" class="mb-4"></div>
+
+                    <div class="d-flex justify-content-between">
+                        <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()" disabled>
+                            <i class="fas fa-arrow-right me-2"></i>Siguiente
+                        </button>
+                        <button id="finishBtn" class="btn btn-success hidden" onclick="finishExam()">
+                            <i class="fas fa-flag-checkered me-2"></i>Finalizar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Pantalla de resultados -->
+            <div id="resultScreen" class="card shadow-lg hidden">
+                <div class="card-body p-4 p-md-5">
+                    <div class="result-card text-center">
+                        <div id="resultIcon" class="mb-4"></div>
+                        <h2 id="resultTitle" class="mb-3"></h2>
+                        <p id="resultMessage" class="lead mb-4"></p>
+
+                        <div id="certificateContainer" class="hidden">
+                            <!-- ====== CERTIFICADO (NUEVO DISEÑO ALCA) ====== -->
+                            <div class="certificate alca" id="certificate">
+                                <!-- Nombre del participante -->
+                                <div class="alca__name" id="certStudentName"></div>
+
+                                <!-- Tema del curso -->
+                                <div class="alca__topic" id="certTopic"></div>
+
+                                <!-- Firmas (líneas están en el arte; estas etiquetas solo posicionan) -->
+                                <div class="alca__sign alca__sign--student">
+                                    <div class="alca__line"></div>
+                                    <div class="alca__label">Participante</div>
+                                </div>
+
+                                <div class="alca__sign alca__sign--instructor">
+                                    <div class="alca__line"></div>
+                                    <div class="alca__label">Instructor</div>
+                                </div>
+
+                                <div class="alca__participant" id="certParticipantSign"></div>
+
+                                <!-- Nombre del instructor como firma -->
+                                <div class="alca__instructor" id="certInstructorSign"></div>
+
+                                <!-- Línea de fecha al pie -->
+                                <div class="alca__date" id="certDateLinea"></div>
+
+                                <!-- Placeholders ocultos para no romper JS existente -->
+                                <div id="certInstructor" class="d-none"></div>
+                                <div id="certDate" class="d-none"></div>
+                                <div id="certScore" class="d-none"></div>
+                            </div>
+                            <!-- ====== /CERTIFICADO ====== -->
+
+                            <div class="text-center mt-4">
+                                <button class="btn btn-primary me-3" onclick="downloadCertificate()">
+                                    <i class="fas fa-file-pdf me-2"></i>Descargar PDF
+                                </button>
+                                <button class="btn btn-outline-secondary" onclick="printCertificate()">
+                                    <i class="fas fa-print me-2"></i>Imprimir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <button class="btn btn-primary me-3" onclick="restartExam()">
+                                <i class="fas fa-redo me-2"></i>Nuevo Examen
+                            </button>
+                            <button class="btn btn-outline-danger" onclick="exitExam()">
+                                <i class="fas fa-sign-out-alt me-2"></i>Salir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Bootstrap JS Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- html2pdf -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+            <script src="script.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+</body>
+
+</html>
